@@ -92,14 +92,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculate(double wt){
-        if (wt <= 25){
-            Toast.makeText(this, "No Plates", Toast.LENGTH_SHORT).show();
-            return;
-        }
         if (wt % 0.5 != 0){
             Toast.makeText(this, "Weight must be a multiple of 0.5KG", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (wt <= 20 && collars.isChecked() == false){
+            Toast.makeText(this, "No Plates", Toast.LENGTH_SHORT).show();
+            return;
+        }
+       
         double netWT = wt - 20;
         if (collars.isChecked()){
             netWT -= 5;
