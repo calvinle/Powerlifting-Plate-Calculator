@@ -165,15 +165,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void countReset(){
-        out25.setText("x0");
-        out20.setText("x0");
-        out15.setText("x0");
-        out10.setText("x0");
-        out5.setText("x0");
-        out2_5.setText("x0");
-        out1_25.setText("x0");
-        out0_5.setText("x0");
-        out0_25.setText("x0");
+        for (int i =0; i < plates.length; i++) {
+            plates[i].setText("x0");
+            plates[i].setTextColor(Integer.parseInt("808080", 16)+0xFF000000);
+        }
     }
 }
 
