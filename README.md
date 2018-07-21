@@ -6,9 +6,9 @@ A standard barbell is 20kg. When inputting a weight number, users should include
 USAPL Collars are 2.5kg each and are used to secure weights to a barbell. As with the barbell, their weight should be included with the input weight. Users have the option to apply this, as they may not have the same applying collars outside of competitions.
 
 ## Bugs
-- [ ] Inputting 25kg without "Collars" enabled returns the same error as inputting 20kg. A 20kg weight implies only the barbell is used and no other plates are required. However, 25kg without collars is valid weight that would require 2.5kg plates on each side.
+- [x] Inputting 25kg without "Collars" enabled returns the same error as inputting 20kg. A 20kg weight implies only the barbell is used and no other plates are required. However, 25kg without collars is valid weight that would require 2.5kg plates on each side.
 - [ ] Inputting longer integers crashses the app. Requires checking.
-- [ ] UI appears "squished" under certain aspect ratios similar to the Samsung Galaxy S8.
+- [x] UI appears "squished" under certain aspect ratios similar to the Samsung Galaxy S8.
 
 ## Compiling
 Simply clone this repository and open the directory in Android Studio to build the APK.
