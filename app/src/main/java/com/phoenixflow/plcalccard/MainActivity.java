@@ -1,6 +1,7 @@
 package com.phoenixflow.plcalccard;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     //Array to hold count of Discs
+    TextView[] plates;
     TextView out25;
     TextView out20;
     TextView out15;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     TextView out0_5;
     TextView out0_25;
     CheckBox collars;
+    CheckBox _25kg;
     int discCount[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     private TextView infoView;
@@ -34,19 +37,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        out25 = (TextView) findViewById(R.id.textView2);
-        out20 = (TextView) findViewById(R.id.textView4);
-        out15 = (TextView) findViewById(R.id.textView6);
-        out10 = (TextView) findViewById(R.id.textView8);
-        out5 = (TextView) findViewById(R.id.textView10);
-        out2_5 = (TextView) findViewById(R.id.textView12);
-        out1_25 = (TextView) findViewById(R.id.textView14);
-        out0_5 = (TextView) findViewById(R.id.textView14);
-        out0_25 = (TextView) findViewById(R.id.textView16);
-        collars = (CheckBox) findViewById(R.id.checkBox);
+        out25 = (TextView)findViewById(R.id.textView2);
+        out20 = (TextView)findViewById(R.id.textView4);
+        out15 = (TextView)findViewById(R.id.textView6);
+        out10 = (TextView)findViewById(R.id.textView8);
+        out5 = (TextView)findViewById(R.id.textView10);
+        out2_5 = (TextView)findViewById(R.id.textView12);
+        out1_25 = (TextView)findViewById(R.id.textView14);
+        out0_5 = (TextView)findViewById(R.id.textView16);
+        out0_25 = (TextView)findViewById(R.id.textView18);
+        plates = new TextView[] {out25, out20, out15, out10, out5, out2_5, out1_25, out0_5, out0_25};
+        collars = findViewById(R.id.checkBox);
+        _25kg = findViewById(R.id._25kg);
+        infoView = findViewById(R.id.infoView);
 
-        infoView = (TextView) findViewById(R.id.infoView);
-
+        //{out25, out20, out15, out10, out5, out2_5, out1_25, out0_5, out0_25};
         countReset();
     }
     @Override
@@ -92,10 +97,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculate(double wt){
-        if (wt <= 25){
+        if (Double.toString(wt).length() > 6){
+            Toast.makeText(this, "Weight must be a multiple of 0.5KG", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (wt <= 25 && collars.isChecked() == true){
             Toast.makeText(this, "No Plates", Toast.LENGTH_SHORT).show();
             return;
         }
+
         if (wt % 0.5 != 0){
             Toast.makeText(this, "Weight must be a multiple of 0.5KG", Toast.LENGTH_SHORT).show();
             return;
@@ -106,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         while (netWT > 0){
-            if (netWT - 25*2 >= 0){
+            if (netWT - 25*2 >= 0 && _25kg.isChecked()){
                 discCount[0]++;
                 netWT = netWT - 25*2;
             }
@@ -143,15 +153,15 @@ public class MainActivity extends AppCompatActivity {
                 netWT = netWT - 0.25*2;
             }
         }
-        out25.setText("x".concat(Integer.toString(discCount[0])));
-        out20.setText("x".concat(Integer.toString(discCount[1])));
-        out15.setText("x".concat(Integer.toString(discCount[2])));
-        out10.setText("x".concat(Integer.toString(discCount[3])));
-        out5.setText("x".concat(Integer.toString(discCount[4])));
-        out2_5.setText("x".concat(Integer.toString(discCount[5])));
-        out1_25.setText("x".concat(Integer.toString(discCount[6])));
-        out0_5.setText("x".concat(Integer.toString(discCount[7])));
-        out0_25.setText("x".concat(Integer.toString(discCount[8])));
+        System.out.println(plates.length);
+        for (int i =0; i < plates.length; i++){
+            plates[i].setText("x" + Integer.toString(discCount[i]));
+            String count = plates[i].getText().toString();
+            System.out.println(count);
+            if (count.equals("x0") == false){
+                plates[i].setTextColor(Integer.parseInt("f44336", 16)+0xFF000000);
+            }
+        }
     }
 
     public void countReset(){
