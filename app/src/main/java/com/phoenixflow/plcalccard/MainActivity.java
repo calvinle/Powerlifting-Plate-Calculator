@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         collars = findViewById(R.id.checkBox);
         _25kg = findViewById(R.id._25kg);
         infoView = findViewById(R.id.infoView);
-
-        //{out25, out20, out15, out10, out5, out2_5, out1_25, out0_5, out0_25};
         countReset();
     }
     @Override
