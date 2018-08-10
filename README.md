@@ -1,5 +1,7 @@
 # Powerlifting Plate Calculator (Android)
 
+Play Store: https://play.google.com/store/apps/details?id=com.phoenixflow.powerliftingcalculator
+
 Designed for powerlifters and users of the Metric system, this Android app allows a user to input a valid weight number and calculate quantities of certain weight plates to load on a barbell. <br/>
 "Valid" is defined as Metric (under the user's acknowledgement that USAPL uses Metric) and a multiple of 0.5. <br/>
 A standard barbell is 20kg. When inputting a weight number, users should include the weight of the barbell, just like referring to it in any other situtation. <br/>
