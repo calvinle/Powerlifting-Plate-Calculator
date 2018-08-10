@@ -6,7 +6,7 @@ A standard barbell is 20kg. When inputting a weight number, users should include
 USAPL Collars are 2.5kg each and are used to secure weights to a barbell. As with the barbell, their weight should be included with the input weight. Users have the option to apply this, as they may not have the same applying collars outside of competitions.
 
 ## Bugs
-- [ ] UI appears "squished" under certain aspect ratios similar to the Samsung Galaxy S8.
+- [x] UI appears "squished" under certain aspect ratios (18.5:9) similar to the Samsung Galaxy S8.
 
 ## Compiling
-Simply clone this repository and open the directory in Android Studio to build the APK.
+Simply clone this repository and open the directory in Android Studio (or import via VCS) to build the APK.
